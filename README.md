@@ -1,7 +1,3 @@
-# Art VS Artist generator
+# Bubus
 
 ## Roadmap
-- [ ] Add help section
-- [ ] Add reset button
-- [ ] Add language switch
-- [ ] Add border customization
