@@ -1,3 +1,9 @@
+@mixin input_bg {}
+
+*, *::after, *::before{
+  box-sizing: border-box;
+}
+
 body {
   height: 100vh;
   background-image: url('assets/bg.png');
@@ -18,10 +24,15 @@ body {
     form {
       text-align: center;
 
-      button {
-        margin-top: 1rem;
+      button, button:focus, button:focus-visible {
         background-color: #9acf61;
+        margin-top: 1rem;
         color: white;
+        outline: none;
+      }
+
+      button:hover{
+        background-color: #81b04e;
       }
 
       .input-group {
@@ -41,11 +52,15 @@ body {
           border-radius: 8px 0 0 8px;
           height: 100%;
           color: white;
+          font-weight: bold;
           width: 20%;
         }
 
         input,
-        input:focus-visible {
+        input:focus-visible,
+        select {
+          color: rgba(255, 255, 255, 0.809);
+          font-weight: bold;
           width: 80%;
           background-color: rgba(0, 0, 0, 0.194);
           backdrop-filter: blur(5px);
@@ -53,6 +68,7 @@ body {
           height: 100%;
           border: none;
           outline: none;
+          padding-left: 1rem;
         }
       }
     }
@@ -63,7 +79,7 @@ body {
       flex-direction: column;
       justify-content: space-between;
 
-    &.result {
+      &.result {
         background-color: rgba(0, 0, 0, 0.092);
         backdrop-filter: blur(5px);
         height: 100%;

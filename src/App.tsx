@@ -1,12 +1,27 @@
+import { useState } from 'react'
 import './App.scss'
 import Footer from './components/Footer'
+import loadingAnimation from './assets/loading.gif'
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+
+  function search(e: React.FormEvent) {
+    e.preventDefault()
+    
+    const loadingTimeout = 2000;
+
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, loadingTimeout);
+  }
+
   return <>
     <main>
       <section>
         <h2>Trouvez le bus pour votre destination</h2>
-        <form>
+        <form onSubmit={search}>
           <div className='input-group'>
             <label htmlFor="town">Ville</label>
             <select name="town" id="town">
@@ -29,7 +44,7 @@ function App() {
         </form>
       </section>
       <section className="result">
-        {/* <h2>Résultat</h2> */}
+        {isLoading ? <img src={loadingAnimation} /> : <h2>Résultat</h2>}
       </section>
     </main>
     <Footer />
