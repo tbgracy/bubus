@@ -1,6 +1,8 @@
 @mixin input_bg {}
 
-*, *::after, *::before{
+*,
+*::after,
+*::before {
   box-sizing: border-box;
 }
 
@@ -24,14 +26,16 @@ body {
     form {
       text-align: center;
 
-      button, button:focus, button:focus-visible {
+      button,
+      button:focus,
+      button:focus-visible {
         background-color: #9acf61;
         margin-top: 1rem;
         color: white;
         outline: none;
       }
 
-      button:hover{
+      button:hover {
         background-color: #81b04e;
       }
 
@@ -54,6 +58,13 @@ body {
           color: white;
           font-weight: bold;
           width: 20%;
+        }
+
+        option {
+          color: black;
+          background-color: white;
+          font-size: larger;
+          font-weight: 500;
         }
 
         input,
