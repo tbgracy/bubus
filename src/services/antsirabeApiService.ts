@@ -5,9 +5,9 @@ import TownApiService from "./apiService";
 
 export default class AntsirabeApiService implements TownApiService {
     BASE_URL = 'https://bus-antsirabe.onrender.com/api';
-    REQUEST_TIMEOUT = 5000; // need to set a global config for lesser code duplication
+    REQUEST_TIMEOUT = -1; // need to set a global config for lesser code duplication
 
-    async search(start: string, end: string, startId: number, endId: number): Promise<Bus[] | Error> {
+    async search(start: number, end: number): Promise<Bus[] | Error> {
         console.log(start, end);
 
         try {
@@ -15,13 +15,8 @@ export default class AntsirabeApiService implements TownApiService {
             const response = await axios.post(
                 `${this.BASE_URL}/travel`,
                 {
-                    a: {
-                        id: startId,
-                        name: start
-                    }, b: {
-                        id: endId,
-                        name: end
-                    }
+                    a: start,
+                    b: end
                 },
                 { timeout: this.REQUEST_TIMEOUT }
             );

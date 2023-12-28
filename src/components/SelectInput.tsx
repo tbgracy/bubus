@@ -5,9 +5,10 @@ type Props = {
     id: string,
     label: string,
     options: string[][] | BusStop[],
+    onChange?: () => void,
 }
 
-const SelectInput = forwardRef<HTMLSelectElement, Props>(({ id, label, options }, ref) => {
+const SelectInput = forwardRef<HTMLSelectElement, Props>(({ id, label, options, onChange }, ref) => {
     let options_;
 
     if (Array.isArray(options[0])) {
@@ -18,7 +19,7 @@ const SelectInput = forwardRef<HTMLSelectElement, Props>(({ id, label, options }
 
     return <div className='input-group'>
         <label htmlFor={id}>{label}</label>
-        <select ref={ref} id={id}>
+        <select ref={ref} id={id} onChange={onChange}>
             {options_}
         </select>
     </div>

@@ -8,6 +8,8 @@ import SelectInput from './components/SelectInput';
 import Footer from './components/Footer'
 import BusStop from './types/BusStop';
 import Result from './Result';
+import MahajangaApiService from './services/mahajangaApiService';
+import TownApiService from './services/apiService';
 
 const towns = [['110', 'Antsirabe'], ['401', 'Mahajanga']]
 
@@ -18,10 +20,20 @@ function App() {
   const [errors, setErrors] = useState<string[]>([]);
   const startInput = useRef<HTMLSelectElement>(null);
   const endInput = useRef<HTMLSelectElement>(null);
+  const [currentTown, setCurrentTown] = useState(towns[0]);
 
   useEffect(() => {
-    const s = new AntsirabeApiService();
-    s.getStops().then(e => {
+    let service: TownApiService;
+
+    if (currentTown.includes('110')) {
+      service = new AntsirabeApiService();
+    } else {
+      service = new MahajangaApiService();
+    }
+
+    setIsLoading(true);
+    service.getStops().then(e => {
+      setIsLoading(false);
       if (e instanceof Error) {
         setErrors([e.message])
         setTimeout(() => {
@@ -31,7 +43,13 @@ function App() {
         setStops(e)
       }
     });
-  }, [])
+
+  }, [currentTown])
+
+  function changeTown() {
+    const newTown = towns.filter(t => t[0] === townInput.current!.value)[0]
+    setCurrentTown(newTown);
+  }
 
   function search(e: React.FormEvent) {
     e.preventDefault()
@@ -46,7 +64,7 @@ function App() {
       <section>
         <h2>Trouvez le bus pour votre destination</h2>
         <form onSubmit={search}>
-          <SelectInput ref={townInput} id='town' label='Ville' options={towns} />
+          <SelectInput ref={townInput} id='town' label='Ville' options={towns} onChange={changeTown} />
           <SelectInput ref={startInput} id='start' label='Départ' options={stops} />
           <SelectInput ref={endInput} id='end' label='Arrivé' options={stops} />
           <button type="submit">Rechercher</button>

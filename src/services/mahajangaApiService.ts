@@ -27,7 +27,6 @@ export default class MahajangaApiService implements TownApiService {
             const res: BusStop[] = [];
             const response = await axios.get(`${this.BASE_URL}/stop/all`);
             const data = response.data;
-            console.log(data);
 
             for (const stopId in data) {
                 const stop = data[stopId];
