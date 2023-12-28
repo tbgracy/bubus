@@ -11,8 +11,9 @@ import Result from './Result';
 import MahajangaApiService from './services/mahajangaApiService';
 import TownApiService from './services/apiService';
 import Bus from './types/Bus';
+import MockApiService from './services/mockService';
 
-const towns = [['110', 'Antsirabe'], ['401', 'Mahajanga']]
+const towns = [['110', 'Antsirabe'], ['401', 'Mahajanga'], ['666', 'Imaginary']]
 
 function App() {
   const townInput = useRef<HTMLSelectElement>(null);
@@ -30,8 +31,10 @@ function App() {
 
     if (currentTown.includes('110')) {
       s = new AntsirabeApiService()
-    } else {
+    } else if (currentTown.includes('401')) {
       s = new MahajangaApiService()
+    } else {
+      s = new MockApiService();
     }
 
     setService(s);

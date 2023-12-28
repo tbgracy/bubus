@@ -8,9 +8,13 @@ type Props = {
 
 export default function Result({ isLoading, bus }: Props) {
     return <section className="result">
-        {isLoading ? <img src={loadingAnimation} /> : <h2>Résultat</h2>}
-        <ul>
-            {bus.map(b => <li>{b.name}</li>)}
-        </ul>
+        {isLoading
+            ? <img src={loadingAnimation} />
+            : <>
+                <ul className='buses'>
+                    {bus.map(b => <li>{b.name}</li>)}
+                </ul>
+            </>
+        }
     </section>
 }
