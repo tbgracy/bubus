@@ -1,6 +1,7 @@
 type Bus = {
-    id: number,
-    colors: string[]
+    id?: number,
+    name: string,
+    colors?: string[]
 }
 
 export default Bus

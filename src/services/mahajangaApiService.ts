@@ -7,14 +7,16 @@ export default class MahajangaApiService implements TownApiService {
     BASE_URL = 'https://bus-mj.onrender.com/api';
 
     async search(start: string, end: string): Promise<Bus[] | Error> {
-        console.log(start, end);
-
         try {
             const res: Bus[] = [];
-            const response = await axios.get(`${this.BASE_URL}?depart=${start}&fin${end}`);
+            
+            const response = await axios.get(`${this.BASE_URL}?depart=${start}&fin=${end}`);
             const data = response.data;
-            for (const busId in data) {
-                console.log(busId);
+            for (const bus of data){
+                res.push({
+                    name: bus['BUS_NAME']
+                })
+                
             }
             return res;
         } catch (e) {
@@ -31,7 +33,7 @@ export default class MahajangaApiService implements TownApiService {
             for (const stopId in data) {
                 const stop = data[stopId];
                 res.push({
-                    id: parseInt(stopId),
+                    id: stop,
                     name: stop
                 })
             }

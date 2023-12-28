@@ -1,5 +1,5 @@
 type BusStop = {
-    id: number,
+    id: number | string,
     name: string
 }
 

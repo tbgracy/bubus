@@ -10,6 +10,7 @@ import BusStop from './types/BusStop';
 import Result from './Result';
 import MahajangaApiService from './services/mahajangaApiService';
 import TownApiService from './services/apiService';
+import Bus from './types/Bus';
 
 const towns = [['110', 'Antsirabe'], ['401', 'Mahajanga']]
 
@@ -21,18 +22,22 @@ function App() {
   const startInput = useRef<HTMLSelectElement>(null);
   const endInput = useRef<HTMLSelectElement>(null);
   const [currentTown, setCurrentTown] = useState(towns[0]);
+  const [service, setService] = useState<TownApiService>(new AntsirabeApiService());
+  const [bus, setBus] = useState<Bus[]>([]);
 
   useEffect(() => {
-    let service: TownApiService;
+    let s: TownApiService;
 
     if (currentTown.includes('110')) {
-      service = new AntsirabeApiService();
+      s = new AntsirabeApiService()
     } else {
-      service = new MahajangaApiService();
+      s = new MahajangaApiService()
     }
 
+    setService(s);
+
     setIsLoading(true);
-    service.getStops().then(e => {
+    s.getStops().then(e => {
       setIsLoading(false);
       if (e instanceof Error) {
         setErrors([e.message])
@@ -54,6 +59,20 @@ function App() {
   function search(e: React.FormEvent) {
     e.preventDefault()
     setIsLoading(true);
+    let start: string | number = startInput.current!.value;
+    let end: string | number = endInput.current!.value;
+    if (service instanceof AntsirabeApiService) {
+      start = parseInt(start);
+      end = parseInt(end);
+    }
+    service.search(start, end).then(res => {
+      setIsLoading(false);
+      if (res instanceof Error) {
+        setErrors([res.message])
+      } else {
+        setBus(res);
+      }
+    });
   }
 
   return <>
@@ -70,7 +89,7 @@ function App() {
           <button type="submit">Rechercher</button>
         </form>
       </section>
-      <Result isLoading={isLoading} />
+      <Result isLoading={isLoading} bus={bus} />
     </main>
     <Footer />
   </>
