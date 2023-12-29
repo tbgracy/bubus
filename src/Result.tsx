@@ -1,4 +1,5 @@
 import loadingAnimation from './assets/loading.gif'
+import BusItem from './components/BusItem'
 import Bus from './types/Bus'
 
 type Props = {
@@ -12,7 +13,7 @@ export default function Result({ isLoading, bus }: Props) {
             ? <img src={loadingAnimation} />
             : <>
                 <ul className='buses'>
-                    {bus.map(b => <li>{b.name}</li>)}
+                    {bus.map(b => <BusItem bus={b} />)}
                 </ul>
             </>
         }
