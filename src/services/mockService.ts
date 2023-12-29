@@ -5,9 +5,8 @@ import TownApiService from "./apiService";
 export default class MockApiService implements TownApiService {
     async search(start: string, end: string): Promise<Bus[] | Error> {
         console.log(start, end);
-        const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-        await sleep(2000);
-        return [
+
+        const res = [
             {
                 name: 'Bus 666',
             },
@@ -36,6 +35,8 @@ export default class MockApiService implements TownApiService {
                 name: 'Bus 110',
             }
         ]
+
+        return new Promise((resolve) => setTimeout(() => resolve(res), 2000))
     }
 
     async getStops(): Promise<BusStop[] | Error> {
