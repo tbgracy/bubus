@@ -1,7 +1,7 @@
-@mixin input_bg {}
+@import 'variables';
+@import 'responsive';
 
-$border-radius: 8px;
-$red: rgb(211, 69, 69);
+@mixin input_bg {}
 
 *,
 *::after,
@@ -122,7 +122,7 @@ body {
     }
 
     section {
-      width: 500px;
+      width: $section-width;
       display: flex;
       flex-direction: column;
       justify-content: space-between;

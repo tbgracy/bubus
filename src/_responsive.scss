@@ -1,0 +1,15 @@
+@media (max-width: calc($section-width * 2)) {
+    body {
+        background-image: cover;
+
+        main {
+            flex-direction: column;
+
+            section{
+                margin-bottom: 2rem;
+                width: auto;
+                min-width: $section-width;
+            }
+        }
+    }
+}
