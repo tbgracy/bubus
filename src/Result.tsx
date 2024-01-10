@@ -1,5 +1,6 @@
 import loadingAnimation from './assets/loading.gif'
 import BusItem from './components/BusItem'
+import {GoUpBottom} from './components/GoUpButton'
 import Bus from './types/Bus'
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 }
 
 export default function Result({ isLoading, bus }: Props) {
-    return <section className="result">
+    return <section id="result" className="result">
         {isLoading
             ? <img src={loadingAnimation} />
             : <>
@@ -17,5 +18,6 @@ export default function Result({ isLoading, bus }: Props) {
                 </ul>
             </>
         }
+    <GoUpBottom />
     </section>
 }

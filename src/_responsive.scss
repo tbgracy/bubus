@@ -1,14 +1,40 @@
-@media (max-width: calc($section-width * 2)) {
+@media (max-width: calc($section-width * 1.5)) {
     body {
-        background-image: cover;
+        background-size: cover;
+        height: auto;
+        position: relative;
+
+        .go-up-button {
+            display: block;
+            position: absolute;
+            bottom: 1em;
+            right: 1em;
+            cursor: pointer;
+            background-color: $green;
+            color: white;
+            border-radius: 50%;
+            width: 2em;
+            height: 2em;
+            place-content: center;
+            display: grid;
+        }
 
         main {
             flex-direction: column;
+            height: auto;
 
-            section{
+            section {
                 margin-bottom: 2rem;
-                width: auto;
-                min-width: $section-width;
+                width: unset;
+                max-width: 700px;
+                min-width: 400px;
+                &:nth-of-type(2) {
+                    aspect-ratio: 1/1;
+                }
+
+                .input-group {
+                    width: 100%;
+                }
             }
         }
     }

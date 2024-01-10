@@ -16,7 +16,7 @@ export default function Form({ setIsLoading, setErrors, setBus }: { setIsLoading
     const endInput = useRef<HTMLSelectElement>(null);
     const [currentTown, setCurrentTown] = useState(towns[0]);
     const [stops, setStops] = useState<BusStop[]>([]);
-  
+    const aRef = useRef<HTMLAnchorElement>(null);
   
     const [service, setService] = useState<TownApiService>(new AntsirabeApiService());
   
@@ -54,7 +54,10 @@ export default function Form({ setIsLoading, setErrors, setBus }: { setIsLoading
     }
   
     function searchBus(e: React.FormEvent) {
-      e.preventDefault()
+      e.preventDefault();
+
+      aRef.current!.click();
+
       setIsLoading(true);
       let start: string | number = startInput.current!.value;
       let end: string | number = endInput.current!.value;
@@ -78,6 +81,7 @@ export default function Form({ setIsLoading, setErrors, setBus }: { setIsLoading
         <SelectInput ref={townInput} id='town' label='Ville' options={towns} onChange={changeTown} />
         <SelectInput ref={startInput} id='start' label='Départ' options={stops} />
         <SelectInput ref={endInput} id='end' label='Arrivé' options={stops} />
+        <a ref={aRef} href="#result" hidden></a>
         <button type="submit">Rechercher</button>
       </form>
     </section>
