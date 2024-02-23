@@ -3,7 +3,7 @@ import BusStop from "../types/BusStop";
 import TownApiService from "./apiService";
 
 export default class MockApiService implements TownApiService {
-    async search(start: string, end: string): Promise<Bus[] | Error> {
+    async search(start: string, end: string): Promise<Bus[]> {
         console.log(start, end);
 
         const res = [
@@ -39,7 +39,7 @@ export default class MockApiService implements TownApiService {
         return new Promise((resolve) => setTimeout(() => resolve(res), 2000))
     }
 
-    async getStops(): Promise<BusStop[] | Error> {
+    async getStops(): Promise<BusStop[]> {
         return [
             {
                 id: 1,
