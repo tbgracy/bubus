@@ -41,16 +41,19 @@ export class RepositoryImpl implements Repository {
     }
 
     async getStops(town: Town): Promise<BusStop[] | Error> {
+        let stops: BusStop[];
         try {
-
             switch (town.code) {
-                case 110:
-                    return this.antsirabeApiService.getStops();
+                case 110:   
+                    stops = await this.antsirabeApiService.getStops();
+                    break;
                 case 401:
-                    return this.mahajangaApiService.getStops();
+                    stops = await this.mahajangaApiService.getStops();
+                    break;
                 default:
-                    return this.mockApiService.getStops();
+                    stops = await this.mockApiService.getStops();
             }
+            return stops;
         } catch (e) {
             return new Error('Une erreur est survenue');
         }

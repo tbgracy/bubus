@@ -4,7 +4,7 @@ import TownApiService from "./apiService";
 
 export default class MockApiService implements TownApiService {
     async search(start: string, end: string): Promise<Bus[]> {
-        console.log(start, end);
+        console.log(`start bus id: ${start}, end bus id : ${end}`);
 
         const res = [
             {
@@ -36,7 +36,7 @@ export default class MockApiService implements TownApiService {
             }
         ]
 
-        return new Promise((resolve) => setTimeout(() => resolve(res), 2000))
+        return new Promise((resolve) => setTimeout(() => resolve(res), 1000))
     }
 
     async getStops(): Promise<BusStop[]> {

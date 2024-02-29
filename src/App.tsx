@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useReducer } from 'react'
 
 import './App.scss'
 
@@ -6,25 +6,27 @@ import ErrorMessage from './components/ErrorMessage';
 import Footer from './components/Footer'
 import Form from './components/Form';
 import Result from './Result';
-import Bus from './types/Bus';
+import reducer from './reducer';
+
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [errors, setErrors] = useState<string[]>([]);
-  const [bus, setBus] = useState<Bus[]>([]);
+  const [state, dispatch] = useReducer(reducer, {
+    loadingStops: true,
+    loadingBuses: false,
+    data: {},
+    effects: ['FETCH_STOPS'],
+  });
 
   return <>
     <aside className="error-message-container">
-      {errors.map(eM => <ErrorMessage content={eM} />)}
+      {state.errorMessage && <ErrorMessage content={state.errorMessage} />}
     </aside>
     <main>
-      <Form setIsLoading={setIsLoading} setErrors={setErrors} setBus={setBus} />
-      <Result isLoading={isLoading} bus={bus} />
+      <Form state={state} dispatch={dispatch} />
+      <Result isLoading={state.loadingBuses} buses={state.data.buses} />
     </main>
     <Footer />
   </>
 }
-
-
 
 export default App

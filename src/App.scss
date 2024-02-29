@@ -81,7 +81,12 @@ body {
         outline: none;
       }
 
-      button:hover {
+      button:disabled {
+        background-color: rgb(185, 185, 185) !important;
+        cursor: default;
+      }
+
+      button:hover:not {
         background-color: #81b04e;
       }
 
