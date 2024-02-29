@@ -48,3 +48,4 @@ npm run dev
 - [ ] Make it mobile-friendly
 - [ ] Internationalization (English, Malagasy)
 - [ ] SEO
+- [ ] Add dark mode
