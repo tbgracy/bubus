@@ -58,6 +58,22 @@ body {
       border-radius: $border-radius;
       padding: .5rem 1rem;
       animation: slideFromLeft .2s linear;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+
+      span {
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        padding: .3rem .2rem;
+        transition: all .2s linear;
+
+        &:hover {
+          transform: rotate(90deg);
+          transition: all .2s linear;
+        }
+      }
     }
   }
 

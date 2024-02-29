@@ -19,7 +19,7 @@ function App() {
 
   return <>
     <aside className="error-message-container">
-      {state.errorMessage && <ErrorMessage content={state.errorMessage} />}
+      {state.errorMessage && <ErrorMessage dispatch={dispatch} content={state.errorMessage} />}
     </aside>
     <main>
       <Form state={state} dispatch={dispatch} />

@@ -73,6 +73,7 @@ const reducer = (currentState: State, event: Action): State => {
         stops: [],
       },
       effects: [null],
+      errorMessage: event.message,
     };
   }
 
