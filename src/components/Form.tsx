@@ -70,7 +70,7 @@ export default function Form({ state, dispatch }: { state: State, dispatch: Reac
       <a ref={aRef} href="#result" hidden></a>
       <button
         type="submit"
-        disabled={state.loadingBuses || state.loadingStops || (!state.data.stops?.length ?? -1 > 0)}>
+        disabled={state.loadingBuses || state.loadingStops || (state.data.stops?.length ?? -1) === 0}>
         {(state.loadingBuses || state.loadingStops) ? "..." : "Rechercher "}
       </button>
     </form>
