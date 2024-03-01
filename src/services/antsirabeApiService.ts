@@ -4,7 +4,6 @@ import BusStop from "../types/BusStop";
 import TownApiService from "./apiService";
 
 export default class AntsirabeApiService implements TownApiService {
-    // need to set a global config for lesser code duplication
     BASE_URL = 'https://bus-antsirabe.onrender.com/api';
     REQUEST_TIMEOUT = -1;
 
