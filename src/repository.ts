@@ -64,15 +64,18 @@ export class RepositoryImpl implements Repository {
     }
 
     async getBuses(start: BusStop, end: BusStop, town: Town): Promise<Bus[] | Error> {
+        let buses: Bus[];
         try {
-
             if (town.code === 110) {
-                return this.antsirabeApiService.search(start.id as number, end.id as number);
+                buses = await this.antsirabeApiService.search(Number.parseInt(start.id as string), Number.parseInt(end.id as string));
             }
-            if (town.code === 401) {
-                return this.mahajangaApiService.search(start.id as string, end.id as string);
+            else if (town.code === 401) {
+                buses = await this.mahajangaApiService.search(start.id as string, end.id as string);
             }
-            return new Error('Ville non trouvée');
+            else {
+                return new Error('Ville non trouvée');
+            }
+            return buses;
         } catch (e) {
             return new Error('Une erreur est survenue');
         }
