@@ -6,7 +6,7 @@ A web app that allows you to find the bus from point A to point B in some towns 
 
 ## 🤔 Why
 
-Finding the right bus when you're just moving in a new town is kind of frustrating. Unfortunately, bus data in Madagascar is somewhat hard to find BUT hopefully some awesome devs already made available some data to start with (Shout out to [leorak98](), [selestino](), [j03-dev](https://github.com/j03-dev))
+Finding the right bus when you're just moving in a new town is kind of frustrating. Unfortunately, bus data in Madagascar is somewhat hard to find BUT hopefully some awesome devs already made available some data to start with (Shout out to [leorak98](https://github.com/leorak98), [selestino](https://github.com/selestinohajaniaina), [j03-dev](https://github.com/j03-dev))
 
 ## 🏙️ Curently available towns
 
@@ -41,7 +41,7 @@ npm run dev
 
 ### Submit a pull request
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] Refactor
 - [ ] Display bus color when available
