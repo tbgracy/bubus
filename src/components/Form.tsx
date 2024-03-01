@@ -71,7 +71,7 @@ export default function Form({ state, dispatch }: { state: State, dispatch: Reac
       <button
         type="submit"
         disabled={state.loadingBuses || state.loadingStops || (!state.data.stops?.length ?? -1 > 0)}>
-        Rechercher
+        {(state.loadingBuses || state.loadingStops) ? "..." : "Rechercher "}
       </button>
     </form>
   </section>
