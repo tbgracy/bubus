@@ -16,9 +16,7 @@ export default function Result({ isLoading, buses }: Props) {
         {isLoading
             ? <LoadingAnimation />
             : buses === undefined ? <p>{initialMessage}</p> : <>
-                <ul className='buses'>
-                    {buses!.length > 0 ? buses!.map(b => <BusItem bus={b} />) : <p>{noBusMessage}</p>}
-                </ul>
+                {buses.length > 0 ? <ul className='buses'> {buses!.map(b => <BusItem bus={b} />)} </ul> : <p>{noBusMessage}</p>}
             </>
         }
         <GoUpBottom />
