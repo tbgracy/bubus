@@ -4,8 +4,7 @@ import AntsirabeApiService from "./services/antsirabeApiService";
 import MahajangaApiService from "./services/mahajangaApiService";
 import { MockApiService1, MockApiService2 } from "./services/mockServices";
 
-const inDevEnv = (import.meta.env.VITE_DEV as number) != null ? true : false;
-console.log(inDevEnv);
+const inDevEnv = import.meta.env.VITE_DEV as number == 1 ? true : false;
 
 const initialValue = inDevEnv ? {
     towns: [
