@@ -15,7 +15,6 @@ export default function Form({ state, dispatch }: { state: State, dispatch: Reac
 
   useEffect(() => {
     if (state.effects.includes('FETCH_BUSES')) {
-      console.log('FETCHING BUSES ... ');
       const start = {
         id: startInput.current!.value,
         name: startInput.current!.value,
@@ -57,7 +56,6 @@ export default function Form({ state, dispatch }: { state: State, dispatch: Reac
 
   function searchBus(e: React.FormEvent) {
     e.preventDefault();
-    console.log('Searching for buses ...');
     dispatch({
       type: 'SEARCH'
     })
