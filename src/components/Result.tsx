@@ -1,7 +1,7 @@
-import BusItem from './components/BusItem'
-import { GoUpBottom } from './components/GoUpButton'
-import LoadingAnimation from './components/LoadingAnimation'
-import Bus from './types/Bus'
+import BusItem from './BusItem'
+import { GoUpBottom } from './GoUpButton'
+import LoadingAnimation from './LoadingAnimation'
+import Bus from '../types/Bus'
 
 type Props = {
     isLoading: boolean

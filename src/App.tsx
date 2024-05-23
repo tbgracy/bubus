@@ -5,7 +5,7 @@ import './App.scss'
 import ErrorMessage from './components/ErrorMessage';
 import Footer from './components/Footer'
 import Form from './components/Form';
-import Result from './Result';
+import Result from './components/Result';
 import reducer from './reducer';
 
 
