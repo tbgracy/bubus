@@ -4,13 +4,13 @@ import BusStop from "../types/BusStop";
 import TownApiService from "./apiService";
 
 export default class AntsirabeApiService implements TownApiService {
-    BASE_URL = 'https://bus-antsirabe.onrender.com/api';
+    BASE_URL = 'https://bus-antsirabe-api.onrender.com/api';
     REQUEST_TIMEOUT = -1;
 
     async search(start: number, end: number): Promise<Bus[]> {
         try {
 
-            const body = JSON.stringify({ a: start, b: end });
+            const body = JSON.stringify({ primus: start, terminus: end });
             const res: Bus[] = [];
             const response = await axios.post(
                 `${this.BASE_URL}/travel`,
